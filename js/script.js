@@ -41,8 +41,7 @@ var showLoading = function (selector) {
 // with propValue in given 'string'
 var insertProperty = function (string, propName, propValue) {
   var propToReplace = "{{" + propName + "}}";
-  string = string
-    .replace(new RegExp(propToReplace, "g"), propValue);
+  string = string.replace(new RegExp(propToReplace, "g"), propValue);
   return string;
 };
 
@@ -126,8 +125,7 @@ function buildAndShowHomeHTML (categories) {
       // of how to do that.
       // ....
 
-
-      insertHtml('#main-content', homeHtmlToInsertIntoMainPage);
+      insertHtml('#main-content', homeHtmlToInsertIntoMainPage); 
 
     },
     false); // False here because we are getting just regular HTML from the server, so no need to process JSON.
@@ -199,12 +197,8 @@ function buildCategoriesViewHtml(categories,
     var html = categoryHtml;
     var name = "" + categories[i].name;
     var short_name = categories[i].short_name;
-    html =
-      insertProperty(html, "name", name);
-    html =
-      insertProperty(html,
-                     "short_name",
-                     short_name);
+    html = insertProperty(html, "name", name);
+    html = insertProperty(html, "short_name", short_name);
     finalHtml += html;
   }
 
@@ -261,36 +255,14 @@ function buildMenuItemsViewHtml(categoryMenuItems,
   for (var i = 0; i < menuItems.length; i++) {
     // Insert menu item values
     var html = menuItemHtml;
-    html =
-      insertProperty(html, "short_name", menuItems[i].short_name);
-    html =
-      insertProperty(html,
-                     "catShortName",
-                     catShortName);
-    html =
-      insertItemPrice(html,
-                      "price_small",
-                      menuItems[i].price_small);
-    html =
-      insertItemPortionName(html,
-                            "small_portion_name",
-                            menuItems[i].small_portion_name);
-    html =
-      insertItemPrice(html,
-                      "price_large",
-                      menuItems[i].price_large);
-    html =
-      insertItemPortionName(html,
-                            "large_portion_name",
-                            menuItems[i].large_portion_name);
-    html =
-      insertProperty(html,
-                     "name",
-                     menuItems[i].name);
-    html =
-      insertProperty(html,
-                     "description",
-                     menuItems[i].description);
+    html = insertProperty(html, "short_name", menuItems[i].short_name);
+    html = insertProperty(html, "catShortName", catShortName);
+    html = insertItemPrice(html, "price_small", menuItems[i].price_small);
+    html = insertItemPortionName(html, "small_portion_name", menuItems[i].small_portion_name);
+    html = insertItemPrice(html, "price_large", menuItems[i].price_large);
+    html = insertItemPortionName(html, "large_portion_name", menuItems[i].large_portion_name);
+    html = insertProperty(html, "name", menuItems[i].name); 
+    html = insertProperty(html, "description", menuItems[i].description);
 
     // Add clearfix after every second menu item
     if (i % 2 !== 0) {
@@ -306,9 +278,7 @@ function buildMenuItemsViewHtml(categoryMenuItems,
 }
 
 // Appends price with '$' if price exists
-function insertItemPrice(html,
-                         pricePropName,
-                         priceValue) {
+function insertItemPrice(html, pricePropName, priceValue) {
   // If not specified, replace with empty string
   if (!priceValue) {
     return insertProperty(html, pricePropName, "");
@@ -320,9 +290,7 @@ function insertItemPrice(html,
 }
 
 // Appends portion name in parens if it exists
-function insertItemPortionName(html,
-                               portionPropName,
-                               portionValue) {
+function insertItemPortionName(html, portionPropName, portionValue) {
   // If not specified, return original string
   if (!portionValue) {
     return insertProperty(html, portionPropName, "");
