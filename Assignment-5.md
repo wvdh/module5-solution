@@ -62,6 +62,4 @@ If you've watched the lectures, the code should be very familiar to you.<br><br>
   * Click on the Specials tile again. Most likely, a different single page category page will be shown.
 <br><br>
 Repeat this several times to make sure that most of the time you see a different single category page.
-<br><br>
-
-9. That's it!
+<br>
